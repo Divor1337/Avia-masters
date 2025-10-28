@@ -1,158 +1,74 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aviamasters — играть в ТГ или на сайте</title>
-  <meta name="description" content="Три быстрые кнопки: Инфоканал с бонусами, Играть в ТГ (нужен VPN), Играть на сайте (без VPN)." />
-  <meta property="og:title" content="Aviamasters — быстрый старт" />
-  <meta property="og:description" content="В ТГ — включите VPN. На сайте — VPN не нужен. Нажми и играй!" />
-  <meta property="og:image" content="image/nikitos.png" />
-  <meta name="theme-color" content="#7a40ff" />
-  <link rel="preload" href="image/nikitos.png" as="image" />
-
-  <!-- Мягкий читабельный шрифт -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+  <title>Aviamasters — быстрые ссылки</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      /* Светлее/неоновые фиолетовые тона */
-      --bg0:#0f0a28; --bg1:#1d1850; --bg2:#36207a; --bg3:#7a40ff;
-      --vio1:#8f63ff; --vio2:#ff69b4;
-      --telegram:#2AABEE; --site:#8f63ff; --site2:#ff69b4;
-      --card:#ffffff12; --border:#ffffff2b; --text:#fff; --muted:#ffffffc9; --danger:#ff5a60; --ok:#3ac97b;
-      --radius:22px; --pad:clamp(16px,4vw,24px);
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:\"Inter\",-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(135deg,#0b0720 0%,#17123a 25%,#241b5a 50%,#4021a6 75%,#7a40ff 100%);min-height:100vh;color:#fff;text-align:center;padding:40px 20px;position:relative;overflow-x:hidden
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font:clamp(16px, 3.8vw, 18px)/1.55 'Manrope', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(90vmax 90vmax at -10% -20%, #a07bff40 0%, transparent 60%),
-        radial-gradient(70vmax 70vmax at 120% 20%, #ff69b43a 0%, transparent 60%),
-        linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 30%, var(--bg2) 60%, var(--bg3) 100%);
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      text-rendering:optimizeLegibility;
-    }
+    body::before{content:\"\";position:fixed;inset:0;background:radial-gradient(circle at 20% 80%,rgba(120,119,198,.18) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,119,198,.10) 0%,transparent 50%),radial-gradient(circle at 40% 40%,rgba(120,219,255,.06) 0%,transparent 50%);pointer-events:none;z-index:-1}
 
-    a{color:inherit}
-    .wrap{max-width:880px;margin-inline:auto;padding:calc(var(--pad) + env(safe-area-inset-top)) calc(var(--pad) + env(safe-area-inset-right)) calc(var(--pad) + env(safe-area-inset-bottom)) calc(var(--pad) + env(safe-area-inset-left));}
+    .container{max-width:480px;margin:0 auto;position:relative;z-index:1}
+    .avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.2);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1),inset 0 1px 0 rgba(255,255,255,.2);margin-bottom:30px;transition:all .4s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(10px)}
+    .avatar:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.2),inset 0 1px 0 rgba(255,255,255,.3)}
 
-    /* ===== Header ===== */
-    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .logo img{width:40px;height:40px;border-radius:50%;border:2px solid #ffffff33}
-    .logo span{font-weight:800;letter-spacing:.2px}
-    .nav{display:flex;gap:10px;flex-wrap:wrap}
+    h1{font-family:\"Playfair Display\",serif;font-size:clamp(28px,5vw,36px);font-weight:600;margin-bottom:12px;color:#ffffff;letter-spacing:-.02em;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+    h2{font-family:\"Playfair Display\",serif;font-size:clamp(22px,4.6vw,28px);font-weight:600;margin:6px 0 26px;color:#f2f3ff;letter-spacing:-.01em;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.2)}
 
-    /* ===== Buttons ===== */
-    .btn{--h:clamp(62px,12vw,74px);display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;
-         padding:0 22px;height:var(--h); border:1px solid var(--border); border-radius:9999px; color:var(--text);
-         text-decoration:none; font-weight:700; font-size:clamp(17px,4.6vw,19px); letter-spacing:.2px;
-         position:relative; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
-         backdrop-filter: blur(8px); box-shadow:0 10px 30px rgba(0,0,0,.18)}
-    .btn:hover{transform:translateY(-1px)}
-    .btn:active{transform:translateY(0)}
-    .btn-ghost{background:#ffffff1a}
-    .btn-tg{background:linear-gradient(135deg,#2AABEE 0%, #229ED9 100%); box-shadow:0 10px 30px #2aabee33}
-    .btn-site{background:linear-gradient(135deg,var(--site) 0%, var(--site2) 100%); box-shadow:0 10px 30px #8f63ff33}
+    .links-container{display:flex;flex-direction:column;gap:20px;align-items:center}
+    .link{display:flex;align-items:center;width:100%;max-width:380px;padding:20px 22px;border-radius:18px;text-decoration:none;font-size:18px;font-weight:600;color:#fff;position:relative;overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);letter-spacing:.3px;box-shadow:0 18px 40px rgba(0,0,0,.22)}
+    .link::before{content:\"\";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.04) 100%);transition:all .3s cubic-bezier(.4,0,.2,1);z-index:-1}
+    .link:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 25px 50px rgba(0,0,0,.3);border-color:rgba(255,255,255,.3)}
+    .link:hover::before{background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,.1) 100%)}
 
-    .btn .left{display:flex;align-items:center;gap:10px;min-width:0}
-    .btn .icon{font-size:1.15em; line-height:1; transform:translateY(1px)}
-    .btn .text{white-space:normal; overflow:visible; text-overflow:clip; line-height:1.2; word-break:break-word}
-    .chip{padding:10px 12px;border-radius:9999px;border:1px solid transparent;background:#ffffff25;font-size:12px;font-weight:900;line-height:1;flex:0 0 auto}
-    .chip.ok{color:#fff;background:var(--ok);border-color:var(--ok)}
-    .chip.danger{color:#fff;background:var(--danger);border-color:var(--danger)}
+    .link-icon{width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:14px;border:2px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.3);flex-shrink:0;transition:all .3s}
+    .link:hover .link-icon{transform:scale(1.08);border-color:rgba(255,255,255,.5)}
 
-    /* ===== Cards / Sections ===== */
-    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:clamp(18px,4.6vw,28px); box-shadow:0 24px 60px rgba(0,0,0,.28); backdrop-filter: blur(14px)}
-    .hero{display:grid; grid-template-columns:110px 1fr; gap:16px; align-items:center}
-    .avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #ffffff33; box-shadow:0 12px 30px rgba(0,0,0,.35)}
-    h1{font-size:clamp(24px,7.6vw,36px);line-height:1.18; letter-spacing:.1px; font-weight:800}
+    /* Градиенты для 4-х ссылок (как в исходнике) */
+    .link:nth-child(1){background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);box-shadow:0 15px 35px rgba(102,126,234,.4)}
+    .link:nth-child(2){background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);box-shadow:0 15px 35px rgba(79,172,254,.4)}
+    .link:nth-child(3){background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);box-shadow:0 15px 35px rgba(240,147,251,.4)}
+    .link:nth-child(4){background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%);box-shadow:0 15px 35px rgba(67,233,123,.4)}
 
-    .stack{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+    @media (max-width:480px){body{padding:30px 15px}.avatar{width:120px;height:120px}.link{max-width:100%;padding:18px 20px;font-size:16px}}
 
-    .callout{margin-top:12px;padding:14px 16px;border-radius:16px;border:1px solid #ffffff2e;background:#ffffff12;color:#fff;font-weight:700;text-align:center;font-size:clamp(14px,3.8vw,15px)}
-
-    .section{margin-top:22px}
-    .section h2{font-size:clamp(20px,6vw,28px);margin-bottom:6px;letter-spacing:.1px}
-    .muted{color:var(--muted);font-weight:600}
-
-    footer{margin:26px 0 6px;color:#ffffffa8;font-size:13px;text-align:center}
-
-    @media (max-width:640px){
-      header{flex-direction:column;gap:10px}
-      .hero{grid-template-columns:1fr; text-align:center}
-      .avatar{margin:0 auto}
-      .logo span{display:none}
-      .nav .btn{--h:52px;font-size:16px;width:auto;padding:0 16px}
-      .card{padding:16px}
-    }
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .container>*{animation:fadeInUp .8s cubic-bezier(.4,0,.2,1) forwards}
+    .container>*:nth-child(1){animation-delay:.1s}
+    .container>*:nth-child(2){animation-delay:.2s}
+    .container>*:nth-child(3){animation-delay:.3s}
+    .container>*:nth-child(4){animation-delay:.4s}
+    .container>*:nth-child(5){animation-delay:.5s}
+    .container>*:nth-child(6){animation-delay:.6s}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <a class="logo" href="#top" aria-label="Aviamasters">
-        <img src="image/nikitos.png" width="40" height="40" alt="Логотип Aviamasters" />
-        <span>Aviamasters</span>
+  <div class="container">
+    <img src="image/nikitos.png" alt="Avatar" class="avatar" />
+    <h1>Aviamasters — выбери, как играть</h1>
+    <h2>В ТГ — включите VPN. На сайте — VPN не нужен.</h2>
+
+    <div class="links-container">
+      <a class="link" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">
+        <img src="image/nikitos.png" alt="Телеграм-канал" class="link-icon" />
+        <span>🎁 Вся инфа и бонусы в моём Telegram</span>
       </a>
-      <nav class="nav" aria-label="Быстрые ссылки">
-        <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
-          <span class="left"><span class="icon">🎮</span><span class="text">Играть на сайте</span></span>
-          <span class="chip ok">Без VPN</span>
-        </a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="card hero" id="top">
-        <img class="avatar" src="image/nikitos.png" width="110" height="110" alt="Aviamasters аватар" />
-        <div>
-          <h1>Выбери, как играть</h1>
-          <div class="stack" role="group" aria-label="Главные действия">
-            <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">
-              <span class="left"><span class="icon">🎁</span><span class="text">Вся инфа и бонусы в моём Telegram</span></span>
-            </a>
-            <a class="btn btn-tg" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">
-              <span class="left"><span class="icon">✈️</span><span class="text">Играть в Aviamasters в Telegram</span></span>
-              <span class="chip danger">Нужен VPN</span>
-            </a>
-            <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
-              <span class="left"><span class="icon">🎮</span><span class="text">Играть в Aviamasters на сайте</span></span>
-              <span class="chip ok">Без VPN</span>
-            </a>
-          </div>
-          <div class="callout" aria-live="polite">Чтобы играть в <strong>Telegram</strong>, включите <strong>VPN</strong>. Для <strong>сайта</strong> VPN не нужен.</div>
-        </div>
-      </section>
-
-      <section id="vpn" class="section card">
-        <h2>Халявный VPN для игры в Telegram</h2>
-        <p class="muted">Нужен только для запуска в ТГ. Нажми — бот выдаст бесплатный VPN.</p>
-        <div class="stack">
-          <a class="btn btn-tg" href="https://t.me/neovpnbot?start=493703188" target="_blank" rel="noopener">
-            <span class="left"><span class="icon">🛡️</span><span class="text">Халявный VPN через Telegram‑бота</span></span>
-          </a>
-          <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">
-            <span class="left"><span class="icon">🎁</span><span class="text">Вся инфа и бонусы в моём Telegram</span></span>
-          </a>
-          <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
-            <span class="left"><span class="icon">🎮</span><span class="text">Играть на сайте</span></span>
-            <span class="chip ok">Без VPN</span>
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>18+. Играйте ответственно. Не является офертой.</p>
-    </footer>
+      <a class="link" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">
+        <img src="image/nikitos.png" alt="Aviamasters в Telegram" class="link-icon" />
+        <span>✈️ Играть в Aviamasters в Telegram — нужен VPN</span>
+      </a>
+      <a class="link" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
+        <img src="image/nikitos.png" alt="Aviamasters сайт" class="link-icon" />
+        <span>🎮 Играть в Aviamasters на сайте — без VPN</span>
+      </a>
+      <a class="link" href="https://t.me/neovpnbot?start=493703188" target="_blank" rel="noopener">
+        <img src="image/nikitos.png" alt="Халявный VPN" class="link-icon" />
+        <span>🛡️ Халявный VPN через Telegram‑бота</span>
+      </a>
+    </div>
   </div>
-
-  <!-- Мобильная липкая панель CTA -->
-  </body>
+</body>
 </html>
