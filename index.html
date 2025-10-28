@@ -62,7 +62,7 @@
 
     .btn .left{display:flex;align-items:center;gap:10px;min-width:0}
     .btn .icon{font-size:1.15em; line-height:1; transform:translateY(1px)}
-    .btn .text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .btn .text{white-space:normal; overflow:visible; text-overflow:clip; line-height:1.2; word-break:break-word}
     .chip{padding:10px 12px;border-radius:9999px;border:1px solid transparent;background:#ffffff25;font-size:12px;font-weight:900;line-height:1;flex:0 0 auto}
     .chip.ok{color:#fff;background:var(--ok);border-color:var(--ok)}
     .chip.danger{color:#fff;background:var(--danger);border-color:var(--danger)}
@@ -80,11 +80,6 @@
     .section{margin-top:22px}
     .section h2{font-size:clamp(20px,6vw,28px);margin-bottom:6px;letter-spacing:.1px}
     .muted{color:var(--muted);font-weight:600}
-
-    /* ===== Sticky CTA (mobile) ===== */
-    @media (max-width:640px){
-      .sticky-cta{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom)); display:grid; grid-template-columns:1fr 1fr; gap:10px; background:linear-gradient(to top, rgba(0,0,0,.35), transparent); backdrop-filter:blur(8px); z-index:50}
-    }
 
     footer{margin:26px 0 6px;color:#ffffffa8;font-size:13px;text-align:center}
 
@@ -159,15 +154,5 @@
   </div>
 
   <!-- Мобильная липкая панель CTA -->
-  <div class="sticky-cta" aria-hidden="true">
-    <a class="btn btn-tg" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">
-      <span class="left"><span class="icon">✈️</span><span class="text">В ТГ</span></span>
-      <span class="chip danger">VPN</span>
-    </a>
-    <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
-      <span class="left"><span class="icon">🎮</span><span class="text">На сайте</span></span>
-      <span class="chip ok">Без VPN</span>
-    </a>
-  </div>
-</body>
+  </body>
 </html>
