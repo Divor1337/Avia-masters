@@ -1,325 +1,126 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Премиальные Ссылки</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aviamasters — быстрый выбор: ТГ или сайт</title>
+  <meta name="description" content="Три быстрые кнопки: Вся инфа и бонусы в ТГ, Играть в ТГ (нужен VPN), Играть на сайте (без VPN)." />
+  <meta property="og:title" content="Aviamasters — быстрый старт" />
+  <meta property="og:description" content="В ТГ — нужен VPN. На сайте — без VPN. Три кнопки — нажми и играй!" />
+  <meta property="og:image" content="image/nikitos.png" />
+  <meta name="theme-color" content="#0f3460" />
+  <link rel="preload" href="image/nikitos.png" as="image" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg0:#0d1220; --bg1:#15223b; --bg2:#0f2f53; --bg3:#134a8a; --accent:#ffb703; --accent2:#00f2fe; --telegram:#2AABEE; --site:#43e97b; --site2:#38f9d7;
+      --card:#ffffff12; --border:#ffffff24; --text:#fff; --muted:#ffffffc7; --danger:#ff4d4f; --ok:#2ecc71; --radius:18px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(90vmax 90vmax at -10% -20%, #3a0ca366 0%, transparent 60%),
+        radial-gradient(70vmax 70vmax at 120% 20%, #4361ee33 0%, transparent 60%),
+        linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 30%, var(--bg2) 60%, var(--bg3) 100%);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    body {
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
-      min-height: 100vh;
-      color: #ffffff;
-      text-align: center;
-      padding: 40px 20px;
-      position: relative;
-      overflow-x: hidden;
-    }
+    a{color:inherit}
+    .wrap{max-width:880px;margin-inline:auto;padding:24px}
 
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
-    }
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+    .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo img{width:40px;height:40px;border-radius:50%;border:2px solid #ffffff33}
+    .logo span{font-weight:800;letter-spacing:.2px}
 
-    .container {
-      max-width: 480px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
+    .nav{display:flex;gap:10px}
+    .btn{--h:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 16px;height:var(--h);
+         border:1px solid var(--border); border-radius:999px; color:var(--text); text-decoration:none; font-weight:800; letter-spacing:.2px; position:relative; transition:transform .2s, box-shadow .2s, background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn:active{transform:translateY(0)}
+    .btn-ghost{background:#ffffff14; backdrop-filter: blur(8px)}
+    .btn-tg{background:linear-gradient(135deg,#2AABEE 0%, #229ED9 100%); box-shadow:0 10px 24px #2aabee55}
+    .btn-site{background:linear-gradient(135deg,var(--site) 0%, var(--site2) 100%); box-shadow:0 10px 24px #43e97b55}
 
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      margin-bottom: 30px;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(10px);
-    }
+    .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:900;padding:4px 8px;border-radius:999px;line-height:1;border:1px solid #ffffff38;background:#ffffff20}
+    .tag-danger{color:#ffd6d6;border-color:#ff7b7b66;background:#ff4d4f26}
+    .tag-ok{color:#d7ffe6;border-color:#50fa7b66;background:#2ecc7126}
 
-    .avatar:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; box-shadow:0 24px 60px rgba(0,0,0,.40); backdrop-filter: blur(14px)}
 
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(28px, 5vw, 36px);
-      font-weight: 600;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #e8e9ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
+    .hero{display:grid; grid-template-columns:120px 1fr; gap:18px; align-items:center}
+    .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #ffffff33; box-shadow:0 12px 30px rgba(0,0,0,.35)}
+    h1{font-size:clamp(22px,3.4vw,34px);line-height:1.2; letter-spacing:-.2px; font-weight:900}
+    .sub{color:var(--muted); margin-top:8px}
 
-    h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(28px, 5vw, 36px);
-      font-weight: 600;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #db3636 0%, #fff8f8 50%, #e8e9ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
+    .stack{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+    .stack .btn{height:64px;font-size:18px}
+    .stack .btn small{font-size:12px;opacity:.95}
 
-    .subtitle {
-      font-size: 16px;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 40px;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-    }
+    .callout{margin-top:12px;padding:14px 16px;border-radius:14px;border:1px dashed #ff7b7b66;background:#ff4d4f1a;color:#ffdede;font-weight:900;text-align:center}
 
-    .video-container {
-      position: relative;
-      margin-bottom: 50px;
-    }
+    .section{margin-top:26px}
+    .section h2{font-size:clamp(20px,3vw,28px);margin-bottom:6px;letter-spacing:.1px}
+    .muted{color:var(--muted)}
 
-    .video-box {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-      border-radius: 20px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    .grid-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
 
-    .video-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 
-        0 35px 70px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
+    footer{margin:30px 0 6px;color:#ffffff88;font-size:13px;text-align:center}
 
-    video {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 20px;
+    @media (max-width:640px){
+      header{flex-direction:column;gap:10px}
+      .hero{grid-template-columns:1fr; text-align:center}
+      .avatar{margin:0 auto}
     }
-
-    .links-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .link {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      max-width: 380px;
-      padding: 20px 30px;
-      border-radius: 16px;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 600;
-      color: #ffffff;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      letter-spacing: 0.3px;
-    }
-
-    .link-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 15px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .link:hover .link-icon {
-      transform: scale(1.1);
-      border-color: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-    }
-
-    .link-content {
-      display: flex;
-      align-items: center;
-      flex: 1;
-    }
-
-    .link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: -1;
-    }
-
-    .link:nth-child(1) {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
-    }
-
-    .link:nth-child(2) {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      box-shadow: 0 15px 35px rgba(240, 147, 251, 0.4);
-    }
-
-    .link:nth-child(3) {
-      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      box-shadow: 0 15px 35px rgba(79, 172, 254, 0.4);
-    }
-
-    .link:nth-child(4) {
-      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-      box-shadow: 0 15px 35px rgba(67, 233, 123, 0.4);
-    }
-
-    .link:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .link:hover::before {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-    }
-
-    .link:active {
-      transform: translateY(-4px) scale(0.98);
-    }
-
-    .emoji {
-      font-size: 24px;
-      margin-right: 12px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .link:hover .emoji {
-      transform: scale(1.2) rotate(5deg);
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 30px 15px;
-      }
-      
-      .avatar {
-        width: 120px;
-        height: 120px;
-      }
-      
-      .link {
-        max-width: 100%;
-        padding: 18px 25px;
-        font-size: 16px;
-      }
-      
-      .video-box {
-        max-width: 100%;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .container > * {
-      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    .container > *:nth-child(1) { animation-delay: 0.1s; }
-    .container > *:nth-child(2) { animation-delay: 0.2s; }
-    .container > *:nth-child(3) { animation-delay: 0.3s; }
-    .container > *:nth-child(4) { animation-delay: 0.4s; }
-    .container > *:nth-child(5) { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="image/avia.webp" alt="Avatar" class="avatar">
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#top" aria-label="Aviamasters">
+        <img src="image/nikitos.png" alt="Логотип Aviamasters" />
+        <span>Aviamasters</span>
+      </a>
+      <nav class="nav" aria-label="Быстрые ссылки">
+        <a class="btn btn-ghost" href="#vpn">Скачать VPN</a>
+        <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">Играть на сайте <span class="tag tag-ok">Без VPN</span></a>
+      </nav>
+    </header>
 
-    <h1>ИНСТРУКЦИЯ</h1>
-    
-    
-    <div class="video-container">
-      <div class="video-box">
-        <!-- Локальное видео -->
-        <video controls>
-          <source src="video/tutor.mp4" type="video/mp4">
-          Ваш браузер не поддерживает воспроизведение видео.
-        </video>
-      </div>
-    </div>
-<h1>ССЫЛКИ</h1>
-<h2>ВКЛЮЧАЙТЕ VPN</h2>
-    <div class="links-container">
-      <a class="link" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVlvdVR1YmU" target="_blank">
-        <img src="image/avia.webp" alt="Aviamasters" class="link-icon">
-        <div class="link-content">
-          Aviamasters - Играть в Telegram 
+    <main>
+      <section class="card hero" id="top">
+        <img class="avatar" src="image/nikitos.png" alt="Aviamasters аватар" />
+        <div>
+          <h1>Выбери, как играть</h1>
+          <div class="stack" role="group" aria-label="Главные действия">
+            <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">🎁 Вся инфа и бонусы в моём Telegram</a>
+            <a class="btn btn-tg" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">✈️ Играть в Aviamasters в Telegram <small class="tag tag-danger">Нужен VPN</small></a>
+            <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">Играть в Aviamasters на сайте <small class="tag tag-ok">Без VPN</small></a>
+          </div>
+
+          <div class="callout" aria-live="polite">Чтобы играть в <strong>Telegram</strong> — включите <strong>VPN</strong>. Для <strong>сайта</strong> VPN <u>не нужен</u>.</div>
         </div>
-      </a>
-      <a class="link" href="https://t.me/easy_signa1s" target="_blank">
-        <img src="image/tg.jpg" alt="Telegram" class="link-icon">
-        <div class="link-content">
-      Telegram-канал | Конкурсы
+      </section>
+
+      <section id="vpn" class="section card">
+        <h2>Халявный VPN для игры в Telegram</h2>
+        <p class="muted">Нужен только для запуска в ТГ. Нажми — бот выдаст бесплатный VPN.</p>
+        <div class="stack">
+          <a class="btn btn-tg" href="https://t.me/neovpnbot?start=493703188" target="_blank" rel="noopener">🛡️ Халявный VPN через Telegram‑бота</a>
         </div>
-      </a>
-    </div>
+
+        <div class="grid-cta">
+          <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">🎁 Вся инфа и бонусы в моём Telegram</a>
+          <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">Играть на сайте <span class="tag tag-ok">Без VPN</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>18+. Играйте ответственно. Не является офертой.</p>
+    </footer>
   </div>
 </body>
 </html>
