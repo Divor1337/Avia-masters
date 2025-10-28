@@ -8,12 +8,16 @@
   <meta property="og:title" content="Aviamasters — быстрый старт" />
   <meta property="og:description" content="В ТГ — нужен VPN. На сайте — без VPN. Три кнопки — нажми и играй!" />
   <meta property="og:image" content="image/nikitos.png" />
-  <meta name="theme-color" content="#0f3460" />
+  <meta name="theme-color" content="#4b1ea7" />
   <link rel="preload" href="image/nikitos.png" as="image" />
   <style>
     :root{
-      --bg0:#0d1220; --bg1:#15223b; --bg2:#0f2f53; --bg3:#134a8a; --accent:#ffb703; --accent2:#00f2fe; --telegram:#2AABEE; --site:#43e97b; --site2:#38f9d7;
+      /* Фиолетовая палитра в духе исходника */
+      --bg0:#0b0820; --bg1:#16143a; --bg2:#26185f; --bg3:#5f29d9;
+      --vio1:#7F5AF0; --vio2:#B5179E;
+      --telegram:#2AABEE; --site:#7F5AF0; --site2:#B5179E;
       --card:#ffffff12; --border:#ffffff24; --text:#fff; --muted:#ffffffc7; --danger:#ff4d4f; --ok:#2ecc71; --radius:18px;
+      --pad:clamp(16px,4vw,24px);
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
@@ -21,28 +25,28 @@
       font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(90vmax 90vmax at -10% -20%, #3a0ca366 0%, transparent 60%),
-        radial-gradient(70vmax 70vmax at 120% 20%, #4361ee33 0%, transparent 60%),
+        radial-gradient(90vmax 90vmax at -10% -20%, #9b5bff55 0%, transparent 60%),
+        radial-gradient(70vmax 70vmax at 120% 20%, #ff5ab566 0%, transparent 60%),
         linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 30%, var(--bg2) 60%, var(--bg3) 100%);
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
     a{color:inherit}
-    .wrap{max-width:880px;margin-inline:auto;padding:24px}
+    .wrap{max-width:880px;margin-inline:auto;padding:calc(var(--pad) + env(safe-area-inset-top)) calc(var(--pad) + env(safe-area-inset-right)) calc(var(--pad) + env(safe-area-inset-bottom)) calc(var(--pad) + env(safe-area-inset-left));}
 
     header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
     .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
     .logo img{width:40px;height:40px;border-radius:50%;border:2px solid #ffffff33}
     .logo span{font-weight:800;letter-spacing:.2px}
 
-    .nav{display:flex;gap:10px}
+    .nav{display:flex;gap:10px;flex-wrap:wrap}
     .btn{--h:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 16px;height:var(--h);
          border:1px solid var(--border); border-radius:999px; color:var(--text); text-decoration:none; font-weight:800; letter-spacing:.2px; position:relative; transition:transform .2s, box-shadow .2s, background .2s}
     .btn:hover{transform:translateY(-2px)}
     .btn:active{transform:translateY(0)}
     .btn-ghost{background:#ffffff14; backdrop-filter: blur(8px)}
     .btn-tg{background:linear-gradient(135deg,#2AABEE 0%, #229ED9 100%); box-shadow:0 10px 24px #2aabee55}
-    .btn-site{background:linear-gradient(135deg,var(--site) 0%, var(--site2) 100%); box-shadow:0 10px 24px #43e97b55}
+    .btn-site{background:linear-gradient(135deg,var(--site) 0%, var(--site2) 100%); box-shadow:0 10px 24px #7f5af055}
 
     .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:900;padding:4px 8px;border-radius:999px;line-height:1;border:1px solid #ffffff38;background:#ffffff20}
     .tag-danger{color:#ffd6d6;border-color:#ff7b7b66;background:#ff4d4f26}
@@ -52,27 +56,28 @@
 
     .hero{display:grid; grid-template-columns:120px 1fr; gap:18px; align-items:center}
     .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #ffffff33; box-shadow:0 12px 30px rgba(0,0,0,.35)}
-    h1{font-size:clamp(22px,3.4vw,34px);line-height:1.2; letter-spacing:-.2px; font-weight:900}
-    .sub{color:var(--muted); margin-top:8px}
+    h1{font-size:clamp(22px,7vw,34px);line-height:1.2; letter-spacing:-.2px; font-weight:900}
 
     .stack{display:flex;flex-direction:column;gap:12px;margin-top:18px}
-    .stack .btn{height:64px;font-size:18px}
+    .stack .btn{height:clamp(56px,10vw,64px);font-size:clamp(16px,4.2vw,18px);width:100%;padding:0 14px}
     .stack .btn small{font-size:12px;opacity:.95}
 
     .callout{margin-top:12px;padding:14px 16px;border-radius:14px;border:1px dashed #ff7b7b66;background:#ff4d4f1a;color:#ffdede;font-weight:900;text-align:center}
 
     .section{margin-top:26px}
-    .section h2{font-size:clamp(20px,3vw,28px);margin-bottom:6px;letter-spacing:.1px}
+    .section h2{font-size:clamp(20px,6vw,28px);margin-bottom:6px;letter-spacing:.1px}
     .muted{color:var(--muted)}
 
     .grid-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
 
-    footer{margin:30px 0 6px;color:#ffffff88;font-size:13px;text-align:center}
+    footer{margin:30px 0 6px;color:#ffffffa8;font-size:13px;text-align:center}
 
     @media (max-width:640px){
       header{flex-direction:column;gap:10px}
       .hero{grid-template-columns:1fr; text-align:center}
       .avatar{margin:0 auto}
+      .logo span{display:none}
+      .nav .btn{flex:1 1 100%}
     }
   </style>
 </head>
@@ -99,7 +104,6 @@
             <a class="btn btn-tg" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">✈️ Играть в Aviamasters в Telegram <small class="tag tag-danger">Нужен VPN</small></a>
             <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">Играть в Aviamasters на сайте <small class="tag tag-ok">Без VPN</small></a>
           </div>
-
           <div class="callout" aria-live="polite">Чтобы играть в <strong>Telegram</strong> — включите <strong>VPN</strong>. Для <strong>сайта</strong> VPN <u>не нужен</u>.</div>
         </div>
       </section>
