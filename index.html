@@ -3,81 +3,98 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aviamasters — быстрый выбор: ТГ или сайт</title>
-  <meta name="description" content="Три быстрые кнопки: Вся инфа и бонусы в ТГ, Играть в ТГ (нужен VPN), Играть на сайте (без VPN)." />
+  <title>Aviamasters — играть в ТГ или на сайте</title>
+  <meta name="description" content="Три быстрые кнопки: Инфоканал с бонусами, Играть в ТГ (нужен VPN), Играть на сайте (без VPN)." />
   <meta property="og:title" content="Aviamasters — быстрый старт" />
-  <meta property="og:description" content="В ТГ — нужен VPN. На сайте — без VPN. Три кнопки — нажми и играй!" />
+  <meta property="og:description" content="В ТГ — включите VPN. На сайте — VPN не нужен. Нажми и играй!" />
   <meta property="og:image" content="image/nikitos.png" />
-  <meta name="theme-color" content="#4b1ea7" />
+  <meta name="theme-color" content="#7a40ff" />
   <link rel="preload" href="image/nikitos.png" as="image" />
+
+  <!-- Мягкий читабельный шрифт -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      /* Фиолетовая палитра в духе исходника */
-      --bg0:#0b0820; --bg1:#16143a; --bg2:#26185f; --bg3:#5f29d9;
-      --vio1:#7F5AF0; --vio2:#B5179E;
-      --telegram:#2AABEE; --site:#7F5AF0; --site2:#B5179E;
-      --card:#ffffff12; --border:#ffffff24; --text:#fff; --muted:#ffffffc7; --danger:#ff4d4f; --ok:#2ecc71; --radius:18px;
-      --pad:clamp(16px,4vw,24px);
+      /* Светлее/неоновые фиолетовые тона */
+      --bg0:#0f0a28; --bg1:#1d1850; --bg2:#36207a; --bg3:#7a40ff;
+      --vio1:#8f63ff; --vio2:#ff69b4;
+      --telegram:#2AABEE; --site:#8f63ff; --site2:#ff69b4;
+      --card:#ffffff12; --border:#ffffff2b; --text:#fff; --muted:#ffffffc9; --danger:#ff5a60; --ok:#3ac97b;
+      --radius:22px; --pad:clamp(16px,4vw,24px);
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
-      font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      font:clamp(16px, 3.8vw, 18px)/1.55 'Manrope', system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(90vmax 90vmax at -10% -20%, #9b5bff55 0%, transparent 60%),
-        radial-gradient(70vmax 70vmax at 120% 20%, #ff5ab566 0%, transparent 60%),
+        radial-gradient(90vmax 90vmax at -10% -20%, #a07bff40 0%, transparent 60%),
+        radial-gradient(70vmax 70vmax at 120% 20%, #ff69b43a 0%, transparent 60%),
         linear-gradient(135deg, var(--bg0) 0%, var(--bg1) 30%, var(--bg2) 60%, var(--bg3) 100%);
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
     }
 
     a{color:inherit}
     .wrap{max-width:880px;margin-inline:auto;padding:calc(var(--pad) + env(safe-area-inset-top)) calc(var(--pad) + env(safe-area-inset-right)) calc(var(--pad) + env(safe-area-inset-bottom)) calc(var(--pad) + env(safe-area-inset-left));}
 
-    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+    /* ===== Header ===== */
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
     .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
     .logo img{width:40px;height:40px;border-radius:50%;border:2px solid #ffffff33}
     .logo span{font-weight:800;letter-spacing:.2px}
-
     .nav{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{--h:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 16px;height:var(--h);
-         border:1px solid var(--border); border-radius:999px; color:var(--text); text-decoration:none; font-weight:800; letter-spacing:.2px; position:relative; transition:transform .2s, box-shadow .2s, background .2s}
-    .btn:hover{transform:translateY(-2px)}
+
+    /* ===== Buttons ===== */
+    .btn{--h:clamp(62px,12vw,74px);display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;
+         padding:0 22px;height:var(--h); border:1px solid var(--border); border-radius:9999px; color:var(--text);
+         text-decoration:none; font-weight:700; font-size:clamp(17px,4.6vw,19px); letter-spacing:.2px;
+         position:relative; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+         backdrop-filter: blur(8px); box-shadow:0 10px 30px rgba(0,0,0,.18)}
+    .btn:hover{transform:translateY(-1px)}
     .btn:active{transform:translateY(0)}
-    .btn-ghost{background:#ffffff14; backdrop-filter: blur(8px)}
-    .btn-tg{background:linear-gradient(135deg,#2AABEE 0%, #229ED9 100%); box-shadow:0 10px 24px #2aabee55}
-    .btn-site{background:linear-gradient(135deg,var(--site) 0%, var(--site2) 100%); box-shadow:0 10px 24px #7f5af055}
+    .btn-ghost{background:#ffffff1a}
+    .btn-tg{background:linear-gradient(135deg,#2AABEE 0%, #229ED9 100%); box-shadow:0 10px 30px #2aabee33}
+    .btn-site{background:linear-gradient(135deg,var(--site) 0%, var(--site2) 100%); box-shadow:0 10px 30px #8f63ff33}
 
-    .tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:900;padding:4px 8px;border-radius:999px;line-height:1;border:1px solid #ffffff38;background:#ffffff20}
-    .tag-danger{color:#ffd6d6;border-color:#ff7b7b66;background:#ff4d4f26}
-    .tag-ok{color:#d7ffe6;border-color:#50fa7b66;background:#2ecc7126}
+    .btn .left{display:flex;align-items:center;gap:10px;min-width:0}
+    .btn .icon{font-size:1.15em; line-height:1; transform:translateY(1px)}
+    .btn .text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .chip{padding:10px 12px;border-radius:9999px;border:1px solid transparent;background:#ffffff25;font-size:12px;font-weight:900;line-height:1;flex:0 0 auto}
+    .chip.ok{color:#fff;background:var(--ok);border-color:var(--ok)}
+    .chip.danger{color:#fff;background:var(--danger);border-color:var(--danger)}
 
-    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:28px; box-shadow:0 24px 60px rgba(0,0,0,.40); backdrop-filter: blur(14px)}
+    /* ===== Cards / Sections ===== */
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:clamp(18px,4.6vw,28px); box-shadow:0 24px 60px rgba(0,0,0,.28); backdrop-filter: blur(14px)}
+    .hero{display:grid; grid-template-columns:110px 1fr; gap:16px; align-items:center}
+    .avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:4px solid #ffffff33; box-shadow:0 12px 30px rgba(0,0,0,.35)}
+    h1{font-size:clamp(24px,7.6vw,36px);line-height:1.18; letter-spacing:.1px; font-weight:800}
 
-    .hero{display:grid; grid-template-columns:120px 1fr; gap:18px; align-items:center}
-    .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #ffffff33; box-shadow:0 12px 30px rgba(0,0,0,.35)}
-    h1{font-size:clamp(22px,7vw,34px);line-height:1.2; letter-spacing:-.2px; font-weight:900}
+    .stack{display:flex;flex-direction:column;gap:12px;margin-top:14px}
 
-    .stack{display:flex;flex-direction:column;gap:12px;margin-top:18px}
-    .stack .btn{height:clamp(56px,10vw,64px);font-size:clamp(16px,4.2vw,18px);width:100%;padding:0 14px}
-    .stack .btn small{font-size:12px;opacity:.95}
+    .callout{margin-top:12px;padding:14px 16px;border-radius:16px;border:1px solid #ffffff2e;background:#ffffff12;color:#fff;font-weight:700;text-align:center;font-size:clamp(14px,3.8vw,15px)}
 
-    .callout{margin-top:12px;padding:14px 16px;border-radius:14px;border:1px dashed #ff7b7b66;background:#ff4d4f1a;color:#ffdede;font-weight:900;text-align:center}
-
-    .section{margin-top:26px}
+    .section{margin-top:22px}
     .section h2{font-size:clamp(20px,6vw,28px);margin-bottom:6px;letter-spacing:.1px}
-    .muted{color:var(--muted)}
+    .muted{color:var(--muted);font-weight:600}
 
-    .grid-cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+    /* ===== Sticky CTA (mobile) ===== */
+    @media (max-width:640px){
+      .sticky-cta{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom)); display:grid; grid-template-columns:1fr 1fr; gap:10px; background:linear-gradient(to top, rgba(0,0,0,.35), transparent); backdrop-filter:blur(8px); z-index:50}
+    }
 
-    footer{margin:30px 0 6px;color:#ffffffa8;font-size:13px;text-align:center}
+    footer{margin:26px 0 6px;color:#ffffffa8;font-size:13px;text-align:center}
 
     @media (max-width:640px){
       header{flex-direction:column;gap:10px}
       .hero{grid-template-columns:1fr; text-align:center}
       .avatar{margin:0 auto}
       .logo span{display:none}
-      .nav .btn{flex:1 1 100%}
+      .nav .btn{--h:52px;font-size:16px;width:auto;padding:0 16px}
+      .card{padding:16px}
     }
   </style>
 </head>
@@ -85,26 +102,36 @@
   <div class="wrap">
     <header>
       <a class="logo" href="#top" aria-label="Aviamasters">
-        <img src="image/nikitos.png" alt="Логотип Aviamasters" />
+        <img src="image/nikitos.png" width="40" height="40" alt="Логотип Aviamasters" />
         <span>Aviamasters</span>
       </a>
       <nav class="nav" aria-label="Быстрые ссылки">
-        <a class="btn btn-ghost" href="#vpn">Скачать VPN</a>
-        <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">Играть на сайте <span class="tag tag-ok">Без VPN</span></a>
+        <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
+          <span class="left"><span class="icon">🎮</span><span class="text">Играть на сайте</span></span>
+          <span class="chip ok">Без VPN</span>
+        </a>
       </nav>
     </header>
 
     <main>
       <section class="card hero" id="top">
-        <img class="avatar" src="image/nikitos.png" alt="Aviamasters аватар" />
+        <img class="avatar" src="image/nikitos.png" width="110" height="110" alt="Aviamasters аватар" />
         <div>
           <h1>Выбери, как играть</h1>
           <div class="stack" role="group" aria-label="Главные действия">
-            <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">🎁 Вся инфа и бонусы в моём Telegram</a>
-            <a class="btn btn-tg" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">✈️ Играть в Aviamasters в Telegram <small class="tag tag-danger">Нужен VPN</small></a>
-            <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">Играть в Aviamasters на сайте <small class="tag tag-ok">Без VPN</small></a>
+            <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">
+              <span class="left"><span class="icon">🎁</span><span class="text">Вся инфа и бонусы в моём Telegram</span></span>
+            </a>
+            <a class="btn btn-tg" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">
+              <span class="left"><span class="icon">✈️</span><span class="text">Играть в Aviamasters в Telegram</span></span>
+              <span class="chip danger">Нужен VPN</span>
+            </a>
+            <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
+              <span class="left"><span class="icon">🎮</span><span class="text">Играть в Aviamasters на сайте</span></span>
+              <span class="chip ok">Без VPN</span>
+            </a>
           </div>
-          <div class="callout" aria-live="polite">Чтобы играть в <strong>Telegram</strong> — включите <strong>VPN</strong>. Для <strong>сайта</strong> VPN <u>не нужен</u>.</div>
+          <div class="callout" aria-live="polite">Чтобы играть в <strong>Telegram</strong>, включите <strong>VPN</strong>. Для <strong>сайта</strong> VPN не нужен.</div>
         </div>
       </section>
 
@@ -112,12 +139,16 @@
         <h2>Халявный VPN для игры в Telegram</h2>
         <p class="muted">Нужен только для запуска в ТГ. Нажми — бот выдаст бесплатный VPN.</p>
         <div class="stack">
-          <a class="btn btn-tg" href="https://t.me/neovpnbot?start=493703188" target="_blank" rel="noopener">🛡️ Халявный VPN через Telegram‑бота</a>
-        </div>
-
-        <div class="grid-cta">
-          <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">🎁 Вся инфа и бонусы в моём Telegram</a>
-          <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">Играть на сайте <span class="tag tag-ok">Без VPN</span></a>
+          <a class="btn btn-tg" href="https://t.me/neovpnbot?start=493703188" target="_blank" rel="noopener">
+            <span class="left"><span class="icon">🛡️</span><span class="text">Халявный VPN через Telegram‑бота</span></span>
+          </a>
+          <a class="btn btn-ghost" href="https://t.me/easy_signa1s" target="_blank" rel="noopener">
+            <span class="left"><span class="icon">🎁</span><span class="text">Вся инфа и бонусы в моём Telegram</span></span>
+          </a>
+          <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
+            <span class="left"><span class="icon">🎮</span><span class="text">Играть на сайте</span></span>
+            <span class="chip ok">Без VPN</span>
+          </a>
         </div>
       </section>
     </main>
@@ -125,6 +156,18 @@
     <footer>
       <p>18+. Играйте ответственно. Не является офертой.</p>
     </footer>
+  </div>
+
+  <!-- Мобильная липкая панель CTA -->
+  <div class="sticky-cta" aria-hidden="true">
+    <a class="btn btn-tg" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">
+      <span class="left"><span class="icon">✈️</span><span class="text">В ТГ</span></span>
+      <span class="chip danger">VPN</span>
+    </a>
+    <a class="btn btn-site" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
+      <span class="left"><span class="icon">🎮</span><span class="text">На сайте</span></span>
+      <span class="chip ok">Без VPN</span>
+    </a>
   </div>
 </body>
 </html>
