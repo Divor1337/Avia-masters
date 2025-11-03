@@ -4,36 +4,76 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aviamasters — быстрые ссылки</title>
+  <!-- Шрифты как в исходнике -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:\"Inter\",-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(135deg,#0b0720 0%,#17123a 25%,#241b5a 50%,#4021a6 75%,#7a40ff 100%);min-height:100vh;color:#fff;text-align:center;padding:40px 20px;position:relative;overflow-x:hidden
+    body{
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+      background:linear-gradient(135deg,#0b0720 0%,#17123a 25%,#241b5a 50%,#4021a6 75%,#7a40ff 100%);
+      min-height:100vh;color:#fff;text-align:center;padding:40px 20px;position:relative;overflow-x:hidden
     }
-    body::before{content:\"\";position:fixed;inset:0;background:radial-gradient(circle at 20% 80%,rgba(120,119,198,.18) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(255,119,198,.10) 0%,transparent 50%),radial-gradient(circle at 40% 40%,rgba(120,219,255,.06) 0%,transparent 50%);pointer-events:none;z-index:-1}
+    body::before{
+      content:"";position:fixed;inset:0;
+      background:
+        radial-gradient(circle at 20% 80%,rgba(120,119,198,.18) 0%,transparent 50%),
+        radial-gradient(circle at 80% 20%,rgba(255,119,198,.10) 0%,transparent 50%),
+        radial-gradient(circle at 40% 40%,rgba(120,219,255,.06) 0%,transparent 50%);
+      pointer-events:none;z-index:-1
+    }
 
     .container{max-width:480px;margin:0 auto;position:relative;z-index:1}
-    .avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid rgba(255,255,255,.2);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1),inset 0 1px 0 rgba(255,255,255,.2);margin-bottom:30px;transition:all .4s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(10px)}
-    .avatar:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.2),inset 0 1px 0 rgba(255,255,255,.3)}
+    .avatar{
+      width:140px;height:140px;border-radius:50%;object-fit:cover;
+      border:4px solid rgba(255,255,255,.2);
+      box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1),inset 0 1px 0 rgba(255,255,255,.2);
+      margin-bottom:30px;transition:all .4s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(10px)
+    }
+    .avatar:hover{transform:translateY(-8px) scale(1.05)}
 
-    h1{font-family:\"Playfair Display\",serif;font-size:clamp(28px,5vw,36px);font-weight:600;margin-bottom:12px;color:#ffffff;letter-spacing:-.02em;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.25)}
-    h2{font-family:\"Playfair Display\",serif;font-size:clamp(22px,4.6vw,28px);font-weight:600;margin:6px 0 26px;color:#f2f3ff;letter-spacing:-.01em;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+    h1{
+      font-family:"Playfair Display",serif;
+      font-size:clamp(28px,5vw,36px);font-weight:600;margin-bottom:12px;
+      color:#ffffff;letter-spacing:-.02em;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.25)
+    }
 
     .links-container{display:flex;flex-direction:column;gap:20px;align-items:center}
-    .link{display:flex;align-items:center;width:100%;max-width:380px;padding:20px 22px;border-radius:18px;text-decoration:none;font-size:18px;font-weight:600;color:#fff;position:relative;overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);letter-spacing:.3px;box-shadow:0 18px 40px rgba(0,0,0,.22)}
-    .link::before{content:\"\";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.04) 100%);transition:all .3s cubic-bezier(.4,0,.2,1);z-index:-1}
-    .link:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 25px 50px rgba(0,0,0,.3);border-color:rgba(255,255,255,.3)}
-    .link:hover::before{background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,.1) 100%)}
 
-    .link-icon{width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:14px;border:2px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.3);flex-shrink:0;transition:all .3s}
-    .link:hover .link-icon{transform:scale(1.08);border-color:rgba(255,255,255,.5)}
+    .link{
+      display:flex;align-items:center;width:100%;max-width:380px;padding:20px 22px;border-radius:18px;
+      text-decoration:none;font-size:18px;font-weight:600;color:#fff;position:relative;overflow:hidden;
+      transition:all .3s cubic-bezier(.4,0,.2,1);
+      backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);
+      letter-spacing:.3px;box-shadow:0 18px 40px rgba(0,0,0,.22)
+    }
+    .link::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.04) 100%);
+      transition:all .3s cubic-bezier(.4,0,.2,1);z-index:-1
+    }
+    .link:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 25px 50px rgba(0,0,0,.3)}
+    .link span{ text-shadow:0 1px 2px rgba(0,0,0,.35) }
 
-    /* Градиенты для 4-х ссылок (как в исходнике) */
+    .link-icon{
+      width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:14px;
+      border:2px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.3);flex-shrink:0
+    }
+
+    /* Градиенты: фиолетовую и розовую оставляем, остальные затемняем для контраста */
+    /* 1) Играть на сайте — ФИОЛЕТОВАЯ */
     .link:nth-child(1){background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);box-shadow:0 15px 35px rgba(102,126,234,.4)}
-    .link:nth-child(2){background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);box-shadow:0 15px 35px rgba(79,172,254,.4)}
+    /* 2) Инфоканал — ГЛУБОКИЙ СИНИЙ */
+    .link:nth-child(2){background:linear-gradient(135deg,#2563eb 0%,#0ea5e9 100%);box-shadow:0 15px 35px rgba(37,99,235,.40)}
+    /* 3) Играть в ТГ — РОЗОВАЯ */
     .link:nth-child(3){background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);box-shadow:0 15px 35px rgba(240,147,251,.4)}
-    .link:nth-child(4){background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%);box-shadow:0 15px 35px rgba(67,233,123,.4)}
+    /* 4) Халявный VPN — ЗЕЛЕНО-БИРЮЗОВЫЙ */
+    .link:nth-child(4){background:linear-gradient(135deg,#16a34a 0%,#0ea5a6 100%);box-shadow:0 15px 35px rgba(22,163,74,.40)}
 
-    @media (max-width:480px){body{padding:30px 15px}.avatar{width:120px;height:120px}.link{max-width:100%;padding:18px 20px;font-size:16px}}
+    @media (max-width:480px){
+      body{padding:30px 15px}
+      .avatar{width:120px;height:120px}
+      .link{max-width:100%;padding:18px 20px;font-size:16px}
+    }
 
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     .container>*{animation:fadeInUp .8s cubic-bezier(.4,0,.2,1) forwards}
@@ -48,25 +88,32 @@
 <body>
   <div class="container">
     <img src="image/nikitos.png" alt="Avatar" class="avatar" />
+
     <h1>Aviamasters — выбери, как играть</h1>
-    <h2>В ТГ — включите VPN. На сайте — VPN не нужен.</h2>
 
     <div class="links-container">
-      <a class="link" href="https://t.me/+Y5OisneeTDI2NTky" target="_blank" rel="noopener">
-        <img src="image/nikitos.png" alt="Телеграм-канал" class="link-icon" />
-        <span>🎁 Вся инфа и бонусы в моём Telegram</span>
-      </a>
-      <a class="link" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">
-        <img src="image/nikitos.png" alt="Aviamasters в Telegram" class="link-icon" />
-        <span>✈️ Играть в Aviamasters в Telegram — нужен VPN</span>
-      </a>
+      <!-- 1) Сайт -->
       <a class="link" href="https://luckybear.vip/0Z8t7o" target="_blank" rel="noopener">
         <img src="image/nikitos.png" alt="Aviamasters сайт" class="link-icon" />
-        <span>🎮 Играть в Aviamasters на сайте — без VPN</span>
+        <span>🎮 Играть в Aviamasters на сайте</span>
       </a>
+
+      <!-- 2) Инфоканал -->
+      <a class="link" href="https://t.me/+Y5OisneeTDI2NTky" target="_blank" rel="noopener">
+        <img src="image/tg.png" alt="Телеграм-канал" class="link-icon" />
+        <span>🎁 Telegram c БОНУСАМИ</span>
+      </a>
+
+      <!-- 3) Игра в ТГ -->
+      <a class="link" href="https://t.me/Lucky_Bear_Zvezda_Bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPVRn" target="_blank" rel="noopener">
+        <img src="image/tg.png" alt="Aviamasters в Telegram" class="link-icon" />
+        <span>✈️ Играть в Aviamasters в Telegram</span>
+      </a>
+
+      <!-- 4) VPN -->
       <a class="link" href="https://t.me/neovpnbot?start=493703188" target="_blank" rel="noopener">
-        <img src="image/nikitos.png" alt="Халявный VPN" class="link-icon" />
-        <span>🛡️ Халявный VPN через Telegram‑бота</span>
+        <img src="image/VPN.png" alt="Халявный VPN" class="link-icon" />
+        <span>🛡️ Халявный VPN</span>
       </a>
     </div>
   </div>
