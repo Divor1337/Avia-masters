@@ -1,118 +1,232 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aviamasters — быстрые ссылки</title>
-  <!-- Шрифты как в исходнике -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LuckyBear | Играть сейчас</title>
+  <link rel="icon" href="https://luckybear.fun//_next/static/media/home_logo.a028b260.png">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
-      /* ТОЛЬКО фон — тёмный градиент #07090f → #0c2a55 */
-      background:linear-gradient(135deg,#07090f 0%,#0c2a55 100%);
-      min-height:100vh;color:#fff;text-align:center;padding:40px 20px;position:relative;overflow-x:hidden
-    }
-    body::before{
-      /* Отключаем осветляющую вуаль, чтобы не было белого */
-      content:"";position:fixed;inset:0;background:none;pointer-events:none;z-index:-1;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .container{max-width:480px;margin:0 auto;position:relative;z-index:1}
-    .avatar{
-      width:140px;height:140px;border-radius:50%;object-fit:cover;
-      border:4px solid rgba(255,255,255,.2);
-      box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1),inset 0 1px 0 rgba(255,255,255,.2);
-      margin-bottom:30px;transition:all .4s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(10px)
-    }
-    .avatar:hover{transform:translateY(-8px) scale(1.05)}
-
-    h1{
-      font-family:"Playfair Display",serif;
-      font-size:clamp(28px,5vw,36px);font-weight:600;margin-bottom:12px;
-      color:#ffffff;letter-spacing:-.02em;line-height:1.2;text-shadow:0 1px 2px rgba(0,0,0,.25)
+    body {
+      background: radial-gradient(circle at top, #001a33, #000814);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
     }
 
-    .links-container{display:flex;flex-direction:column;gap:20px;align-items:center}
-
-    .link{
-      display:flex;align-items:center;width:100%;max-width:380px;padding:20px 22px;border-radius:18px;
-      text-decoration:none;font-size:18px;font-weight:600;color:#fff;position:relative;overflow:hidden;
-      transition:all .3s cubic-bezier(.4,0,.2,1);
-      backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);
-      letter-spacing:.3px;box-shadow:0 18px 40px rgba(0,0,0,.22)
-    }
-    .link::before{
-      content:"";position:absolute;inset:0;
-      background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.04) 100%);
-      transition:all .3s cubic-bezier(.4,0,.2,1);z-index:-1
-    }
-    .link:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 25px 50px rgba(0,0,0,.3)}
-    .link span{ text-shadow:0 1px 2px rgba(0,0,0,.35) }
-
-    .link-icon{
-      width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:14px;
-      border:2px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.3);flex-shrink:0
+    img {
+      width: 55vw;
+      max-width: 220px;
+      min-width: 140px;
+      margin-bottom: 50px;
+      animation: fadeIn 1.5s ease;
     }
 
-    /* Градиенты: фиолетовую и розовую оставляем, остальные затемняем для контраста */
-    /* 1) Играть на сайте — ФИОЛЕТОВАЯ */
-    .link:nth-child(1){background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);box-shadow:0 15px 35px rgba(102,126,234,.4)}
-    /* 2) Инфоканал — ГЛУБОКИЙ СИНИЙ */
-    .link:nth-child(2){background:linear-gradient(135deg,#2563eb 0%,#0ea5e9 100%);box-shadow:0 15px 35px rgba(37,99,235,.40)}
-    /* 3) Играть в ТГ — РОЗОВАЯ */
-    .link:nth-child(3){background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);box-shadow:0 15px 35px rgba(240,147,251,.4)}
-    /* 4) Халявный VPN — ЗЕЛЕНО-БИРЮЗОВЫЙ */
-    .link:nth-child(4){background:linear-gradient(135deg,#16a34a 0%,#0ea5a6 100%);box-shadow:0 15px 35px rgba(22,163,74,.40)}
-
-    @media (max-width:480px){
-      body{padding:30px 15px}
-      .avatar{width:120px;height:120px}
-      .link{max-width:100%;padding:18px 20px;font-size:16px}
+    .play-btn {
+      background: linear-gradient(90deg, #007bff, #0055cc);
+      color: white;
+      border: none;
+      padding: 18px 70px;
+      font-size: 1.4em;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+      width: 80%;
+      max-width: 320px;
     }
 
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    .container>*{animation:fadeInUp .8s cubic-bezier(.4,0,.2,1) forwards}
-    .container>*:nth-child(1){animation-delay:.1s}
-    .container>*:nth-child(2){animation-delay:.2s}
-    .container>*:nth-child(3){animation-delay:.3s}
-    .container>*:nth-child(4){animation-delay:.4s}
-    .container>*:nth-child(5){animation-delay:.5s}
-    .container>*:nth-child(6){animation-delay:.6s}
+    .play-btn:active {
+      transform: scale(0.97);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s ease;
+      z-index: 10;
+      padding: 20px;
+    }
+
+    .popup.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup-content {
+      background: #001f3d;
+      padding: 25px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(0, 123, 255, 0.5);
+      width: 90%;
+      max-width: 360px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .popup h2 {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      color: #fff;
+      line-height: 1.4em;
+    }
+
+    .popup-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .popup button {
+      background: linear-gradient(90deg, #007bff, #0055cc);
+      border: none;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.25s;
+      width: 100%;
+    }
+
+    .popup button:active {
+      transform: scale(0.97);
+      background: linear-gradient(90deg, #008cff, #004ecc);
+    }
+
+    .loading {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid #00aaff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .vpn-warning {
+      display: none;
+      margin-top: 15px;
+      font-size: 0.95em;
+      color: #ffcc00;
+      animation: fadeIn 0.5s ease;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.8em;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      width: 100%;
+    }
+
+    @media (max-height: 600px) {
+      img { margin-bottom: 30px; }
+      .play-btn { padding: 14px 50px; font-size: 1.1em; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="image/nikitos.png" alt="Avatar" class="avatar" />
 
-    <h1>🌎ВКЛЮЧИ VPN, если не открывается‼️</h1>
+  <img src="https://luckybear.fun//_next/static/media/home_logo.a028b260.png" alt="LuckyBear Logo">
+  <button class="play-btn" id="playButton">ИГРАТЬ</button>
 
-    <div class="links-container">
-      <!-- 1) Сайт -->
-      <a class="link" href="https://lb333.me/0Z8t7o" target="_blank" rel="noopener">
-        <img src="image/nikitos.png" alt="Aviamasters сайт" class="link-icon" />
-        <span>🎮 Играть в Aviamasters на сайте</span>
-      </a>
+  <div class="popup" id="popup">
+    <div class="popup-content" id="popupContent">
+      <h2>ДЛЯ ИГРЫ НУЖЕН VPN</h2>
+      <div class="popup-buttons" id="popupButtons">
+        <button id="continueBtn">ПРОДОЛЖИТЬ</button>
+        <button id="vpnBtn">СКАЧАТЬ VPN</button>
+      </div>
 
-      <!-- 2) Инфоканал -->
-      <a class="link" href="https://t.me/+Y5OisneeTDI2NTky" target="_blank" rel="noopener">
-        <img src="image/tg.png" alt="Телеграм-канал" class="link-icon" />
-        <span>🎁 Telegram c БОНУСАМИ</span>
-      </a>
-
-      <!-- 3) Игра в ТГ -->
-      <a class="link" href="https://t.me/Reels_Lucky_Bear_bot/app?startapp=bXN0PTB4MWQ2ZDUwMTQmbT1EbWl0cnlWbyZjPU5ld0JvdA" target="_blank" rel="noopener">
-        <img src="image/tg.png" alt="Aviamasters в Telegram" class="link-icon" />
-        <span>✈️ Играть в Aviamasters в Telegram</span>
-      </a>
-
-      <!-- 4) VPN -->
-      <a class="link" href="https://t.me/neovpnbot?start=493703188" target="_blank" rel="noopener">
-        <img src="image/VPN.png" alt="Халявный VPN" class="link-icon" />
-        <span>🛡️ Халявный VPN</span>
-      </a>
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Переходим на сайт...</p>
+        <div class="vpn-warning" id="vpnWarning">
+          Без VPN вряд ли загрузится...<br>
+          <button id="installVpnBtn">Установить VPN</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <footer>© 2025 LuckyBear.fun</footer>
+
+  <script>
+    const playButton = document.getElementById('playButton');
+    const popup = document.getElementById('popup');
+    const continueBtn = document.getElementById('continueBtn');
+    const vpnBtn = document.getElementById('vpnBtn');
+    const loading = document.getElementById('loading');
+    const popupButtons = document.getElementById('popupButtons');
+    const vpnWarning = document.getElementById('vpnWarning');
+    const installVpnBtn = document.getElementById('installVpnBtn');
+
+    playButton.addEventListener('click', () => {
+      popup.classList.add('active');
+    });
+
+    continueBtn.addEventListener('click', () => {
+      popupButtons.style.display = 'none';
+      loading.style.display = 'flex';
+
+      // имитация загрузки
+      setTimeout(() => {
+        vpnWarning.style.display = 'block';
+      }, 3000);
+
+      // перенаправление на сайт
+      window.location.href = "https://lb333.me/0Z8t7o";
+    });
+
+    vpnBtn.addEventListener('click', () => {
+      window.location.href = "https://t.me/neovpnbot?start=493703188";
+    });
+
+    installVpnBtn.addEventListener('click', () => {
+      window.location.href = "https://t.me/neovpnbot?start=493703188";
+    });
+  </script>
+
 </body>
 </html>
